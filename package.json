@@ -1,0 +1,23 @@
+{
+  "name": "mean-stack-criando-aplicacoes-completa-com-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vieirabr19/mean-stack-criando-aplicacoes-completa-com-javascript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vieirabr19/mean-stack-criando-aplicacoes-completa-com-javascript/issues"
+  },
+  "homepage": "https://github.com/vieirabr19/mean-stack-criando-aplicacoes-completa-com-javascript#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
