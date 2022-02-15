@@ -17,4 +17,12 @@ api.fotoPorId = function(req, res){
   res.json(foto);
 }
 
+api.removePorId = function(req, res){
+  photos = photos.filter(function(foto){
+    return foto._id != req.params.id;
+  });
+
+  res.sendStatus(204);
+}
+
 module.exports = api;
