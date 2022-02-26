@@ -16,35 +16,48 @@ module.exports = function(app){
   }
   
   api.fotoPorId = function(req, res){
-    // var foto = photos.find(function(foto){
-    //   return foto._id == req.params.id;
-    // });
-    // res.json(foto);
+    model
+      .findById(req.params.id)
+      .then(function(foto) {
+        if(!foto) throw new Error('Foto não encontrada.');
+        res.json(foto);
+      }, function(error){
+        console.log(error);
+        res.status(404).json(error);
+      });
   }
   
   api.removePorId = function(req, res){
-    // photos = photos.filter(function(foto){
-    //   return foto._id != req.params.id;
-    // });
-    // res.sendStatus(204);
+    model
+      .remove({ _id: req.params.id})
+      .then(function(){
+        res.sendStatus(204);
+      }, function(){
+        console.log(error);
+        res.status(500).json(error);
+      });
   }
   
   api.adiciona = function(req, res){
-    // const foto = req.body;
-    // foto._id = ++GENERATE_ID;
-    // photos.push(foto);
-    // res.json(foto);
+    model
+      .create(req.body)
+      .then(function(foto){
+        res.json(foto)
+      }, function(error){
+        console.log(error);
+        res.status(500).json(error);
+      });
   }
   
   api.atualiza = function(req, res){
-    // var foto = req.body;
-    // var fotoId = req.params.id;
-    // var indice = photos.findIndex(function(foto){
-    //   return foto._id == fotoId;
-    // });
-  
-    // photos[indice] = foto;
-    // res.sendStatus(200);
+    model
+      .findByIdAndUpdate(req.params.id, req.body)
+      .then(function(foto){
+        res.json(foto);
+      }, function(error){
+        console.log(error);
+        res.status(500).json(error);
+      });
   }
 
   return api;
