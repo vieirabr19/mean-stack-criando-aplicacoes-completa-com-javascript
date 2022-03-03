@@ -12,8 +12,10 @@ angular.module('alurapic')
     }
 
     interceptor.request = function(config) {
+      // enviar o token na requisição
       config.headers = config.headers || {};
       if($window.sessionStorage.token) {
+        console.log('Enviando token já obtido em cada requisição');
         config.headers['x-access-token'] = $window.sessionStorage.token;
         console.log('Adicionando token no header da requisição para ser enviado ao servidor');
       }
@@ -21,7 +23,8 @@ angular.module('alurapic')
     }
 
     interceptor.responseError = function(rejection) {
-      if(rejection != null && rejection.status == 401){
+      if(rejection != null && rejection.status === 401){
+        console.log('Removendo token da sessão');
         delete $window.sessionStorage.token;
         $location.path('/login');
       }

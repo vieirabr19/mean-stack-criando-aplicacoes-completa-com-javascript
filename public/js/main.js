@@ -1,6 +1,7 @@
 angular.module('alurapic', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResource', 'meusServicos'])
 	.config(function($routeProvider, $locationProvider, $httpProvider) {
 
+    // cuidado, tem que receber como parâmetro o mesmo nome do interceptador
     $httpProvider.interceptors.push('tokenInterceptor');
 
 		$routeProvider.when('/fotos', {
